@@ -1,0 +1,5 @@
+vq-f4.zip
+**/__pycache__/
+checkpoints/*
+src/*
+inference_h0_results

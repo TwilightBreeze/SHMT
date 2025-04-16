@@ -33,6 +33,7 @@ class MakeupDataset(Dataset):
 
         seg_list = os.listdir(seg_path)
         depth_list = os.listdir(depth_path)
+        print(self.name_list)
         # check segmentation maps
         for name in self.name_list:
             assert name[
@@ -55,7 +56,8 @@ class MakeupDataset(Dataset):
                      border_mode=cv2.BORDER_CONSTANT,
                      value=0,
                      p=0.5)
-        ])
+        ], is_check_shapes=False
+        )
 
         self.spatial_aug_with_elas = A.Compose([
             A.Resize(height=286, width=286),
@@ -73,7 +75,7 @@ class MakeupDataset(Dataset):
                 value=0,
                 p=0.8
             )
-        ])
+        ],is_check_shapes=False)
 
     def __len__(self):
         if not self.is_train:
@@ -117,6 +119,7 @@ class MakeupDataset(Dataset):
             real_ref_image = cv2.imread(os.path.join(self.image_path, real_ref_name))
             real_ref_image = cv2.cvtColor(real_ref_image, cv2.COLOR_BGR2RGB)
             real_ref_seg = cv2.imread(os.path.join(self.seg_path, real_ref_name[:-4] + '.png'), flags=cv2.IMREAD_GRAYSCALE)
+            
             real_ref_dict = self.spatial_aug_without_elas(image=real_ref_image, mask=real_ref_seg)
 
             real_ref_image = real_ref_dict['image']

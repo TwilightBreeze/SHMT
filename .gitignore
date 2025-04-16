@@ -3,3 +3,15 @@ vq-f4.zip
 checkpoints/*
 src/*
 inference_h0_results
+val_data
+val_data_wild
+train_data_wild
+train_data_mt_dataset
+MT-Dataset
+Makeup-Wild
+makeup 
+inference_h0_results
+inference_model2_results_0.5
+logs
+*.zip
+*.rar

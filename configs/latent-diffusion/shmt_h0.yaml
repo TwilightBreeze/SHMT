@@ -90,16 +90,16 @@ data:
       target: ldm.data.makeup_dataset.MakeupDataset
       params:
         is_train: True
-        image_path: examples/images
-        seg_path: examples/seg2
-        depth_path: examples/3d
+        image_path: train_data_mt_dataset/images
+        seg_path: train_data_mt_dataset/seg2
+        depth_path: train_data_mt_dataset/3d
     validation:
       target: ldm.data.makeup_dataset.MakeupDataset
       params:
         is_train: False
-        image_path: examples/images
-        seg_path: examples/seg2
-        depth_path: examples/3d
+        image_path: val_data_wild/images
+        seg_path: val_data_wild/seg2
+        depth_path: val_data_wild/3d
 
 
 lightning:

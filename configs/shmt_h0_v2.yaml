@@ -2,7 +2,7 @@ model:
   base_learning_rate: 1.0e-06
   target: ldm.models.diffusion.ddpm.LatentDiffusion
   params:
-    level_of_Laplace: 4
+    level_of_Laplace: 0
     linear_start: 0.0015
     linear_end: 0.0195
     num_timesteps_cond: 1
@@ -25,7 +25,7 @@ model:
     corr_stage_config:
       target: ldm.models.correspondence.Correspondence
       params:
-        in_channels_list: [22, 68, 70]
+        in_channels_list: [22, 83, 70]
         model_channels: 224
         num_res_blocks: 2
         channel_mult:
@@ -38,7 +38,7 @@ model:
       target: ldm.modules.diffusionmodules.openaimodel.UNetModel
       params:
         image_size: 64
-        in_channels: 106
+        in_channels: 121
         out_channels: 3
         model_channels: 224
         attention_resolutions:
@@ -61,7 +61,7 @@ model:
       params:
         embed_dim: 3
         n_embed: 8192
-        ckpt_path: checkpoints/vq-f4/model.ckpt 
+        ckpt_path: checkpoints/vq-f4/model.ckpt #baseline
         ddconfig:
           double_z: false
           z_channels: 3
@@ -83,7 +83,7 @@ model:
 data:
   target: main.DataModuleFromConfig
   params:
-    batch_size: 16
+    batch_size: 16sudo apt install git-filter-repo
     num_workers: 4
     wrap: false
     train:
